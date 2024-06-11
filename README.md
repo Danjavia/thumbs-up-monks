@@ -1,10 +1,10 @@
 # Nuxt 3 Minimal Starter (Thumbs up test for Formula.Monks)
 
-For checking the site. visit ()
+For checking the site. visit (https://thumbs-up-monks.vercel.app/)
 
 ## Installation
 
-### Requirements
+### Requirements for running on localhost
 
 - NodeJS v21.7.1 or lts/iron (v20.13.1)
 - pnpm 8.76
@@ -28,7 +28,7 @@ After go to (http://localhost:3000/)
    
 ### Install via docker
 
-1. Be sure to copy .env file at root of the project
+1. Be sure to copy .env file at root of the project before build
 
 2. Build the image
 
@@ -45,3 +45,7 @@ docker run -p 3000:3000 thumbs-up-monks
 After go to (http://localhost:3000/)
 
 ### How to Deploy to vercel
+
+to deploy via vercel, instal `vercel-cli` following the next steps (https://vercel.com/docs/cli/deploying-from-cli).
+
+With `vercel-cli` installed, run `vercel --prod`
