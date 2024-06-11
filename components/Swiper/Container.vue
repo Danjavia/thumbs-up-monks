@@ -8,6 +8,7 @@ const items = computed(() => itemStore.items);
 
 const voteNow = (data: IVote) => {
   itemStore.voteItem(data);
+  itemStore.loadItems();
 };
 
 onMounted(() => {

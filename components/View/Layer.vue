@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { ref, watch, computed, onMounted } from "vue";
 import { useItemStore } from "~/store/useItemStore";
 import type { IVote } from "~/types/vote";
 
@@ -28,12 +28,16 @@ watch(internalView, (newVal) => {
 const itemStore = useItemStore();
 const items = computed(() => itemStore.items);
 
-const voteNow = (data: IVote) => {
-  itemStore.voteItem(data);
+const voteNow = async (data: IVote) => {
+  await itemStore.voteItem(data);
 };
 
 onMounted(() => {
   itemStore.loadItems();
+});
+
+onBeforeUnmount(() => {
+  itemStore.unsubscribeItems();
 });
 </script>
 

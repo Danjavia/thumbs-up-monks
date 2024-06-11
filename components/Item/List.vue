@@ -63,33 +63,37 @@ const resetVote = () => {
       <div
         v-if="positivePercentage > negativePercentage"
         class="absolute top-0 left-0 btn like-btn"
+        aria-label="More positive votes"
       >
-        <img src="assets/img/thumbs-up.svg" alt="thumbs up" />
+        <img src="assets/img/thumbs-up.svg" alt="thumbs up icon" />
       </div>
-      <div v-else class="absolute top-0 left-0 btn dislike-btn">
-        <img src="assets/img/thumbs-down.svg" alt="thumbs down" />
+      <div
+        v-else
+        class="absolute top-0 left-0 btn dislike-btn"
+        aria-label="More negative votes"
+      >
+        <img src="assets/img/thumbs-down.svg" alt="thumbs down icon" />
       </div>
     </div>
 
     <NuxtImg
       sizes="100vw sm:50vw md:100vw"
-      :src="`/img/participants/${picture}`"
-      alt="Profile Image"
+      :src="`/img/participants/${props.picture}`"
+      alt="Profile Image of {{ props.name }}"
       class="object-cover"
       width="257px"
       height="170px"
-      role="none"
     />
 
     <div class="list-item__content relative flex justify-between">
       <div class="list-item__header flex-1">
-        <h2 class="text-white text-2xl font-[400]">{{ name }}</h2>
-        <p class="font-thin text-xs line-clamp-2">{{ description }}</p>
+        <h2 class="text-white text-2xl font-[400]">{{ props.name }}</h2>
+        <p class="font-thin text-xs line-clamp-2">{{ props.description }}</p>
       </div>
       <div class="list-item__footer">
         <div class="text-right mb-3 text-xs font-semibold">
           {{ voteSubmitted ? "Thank you for your vote!" : timeAgo }} in
-          {{ category }}
+          {{ props.category }}
         </div>
         <div class="list-item__actions flex items-center justify-end">
           <button
@@ -99,8 +103,10 @@ const resetVote = () => {
               'like-btn',
               { selected: selectedVote === 'positive' },
             ]"
+            :aria-pressed="selectedVote === 'positive'"
+            aria-label="Vote positive"
           >
-            <img src="assets/img/thumbs-up.svg" alt="thumbs up" />
+            <img src="assets/img/thumbs-up.svg" alt="thumbs up icon" />
           </button>
           <button
             @click="toggleVote('negative')"
@@ -109,13 +115,16 @@ const resetVote = () => {
               'dislike-btn',
               { selected: selectedVote === 'negative' },
             ]"
+            :aria-pressed="selectedVote === 'negative'"
+            aria-label="Vote negative"
           >
-            <img src="assets/img/thumbs-down.svg" alt="thumbs down" />
+            <img src="assets/img/thumbs-down.svg" alt="thumbs down icon" />
           </button>
           <button
             @click="voteSubmitted ? resetVote() : voteNow()"
             :disabled="!selectedVote"
             class="btn vote-btn"
+            aria-label="Submit vote"
           >
             {{ voteSubmitted ? "Vote Again" : "Vote Now" }}
           </button>
@@ -123,12 +132,24 @@ const resetVote = () => {
       </div>
     </div>
     <div class="list-item__votes">
-      <div class="like-bar" :style="{ width: positivePercentage + '%' }">
-        <img src="assets/img/thumbs-up.svg" alt="thumbs up" class="mr-2" />
+      <div
+        class="like-bar"
+        :style="{ width: positivePercentage + '%' }"
+        aria-label="Positive votes bar"
+      >
+        <img src="assets/img/thumbs-up.svg" alt="thumbs up icon" class="mr-2" />
         {{ positivePercentage }}%
       </div>
-      <div class="dislike-bar" :style="{ width: negativePercentage + '%' }">
-        <img src="assets/img/thumbs-down.svg" alt="thumbs down" class="mr-2" />
+      <div
+        class="dislike-bar"
+        :style="{ width: negativePercentage + '%' }"
+        aria-label="Negative votes bar"
+      >
+        <img
+          src="assets/img/thumbs-down.svg"
+          alt="thumbs down icon"
+          class="mr-2"
+        />
         {{ negativePercentage }}%
       </div>
     </div>

@@ -28,7 +28,13 @@ definePageMeta({
         </p>
       </div>
       <button class="icon-button" aria-label="close">
-        <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="20"
+          height="20"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          focusable="false"
+        >
           <g stroke="#000" stroke-width="2" fill="none" fill-rule="evenodd">
             <path d="M1 19L19 1M1 1l18 18" />
           </g>
@@ -57,8 +63,8 @@ definePageMeta({
         sizes="(min-width: 750px) 1440px, 100vw"
         class="banner__background"
         src="assets/img/bg-people.png"
-        alt=""
-        role="none"
+        alt="People background"
+        role="img"
       />
       <div class="banner__left">
         <h2 class="banner__heading">
@@ -70,7 +76,7 @@ definePageMeta({
       </div>
     </aside>
 
-    <hr role="separator" />
+    <hr role="separator" aria-hidden="true" />
   </div>
 </template>
 

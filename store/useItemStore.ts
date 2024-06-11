@@ -1,36 +1,47 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
-import { useNuxtApp } from "#app";
-import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
-import type { IVote } from "~/types/vote.d";
+import { collection, updateDoc, doc, onSnapshot } from "firebase/firestore";
+import type { IVote, IItem } from "~/types/vote";
 
-export const useItemStore = defineStore("itemStore", () => {
-  const { $db } = useNuxtApp();
-  const items = ref([]);
+export const useItemStore = defineStore("item", {
+  state: () => ({
+    items: [] as IItem[],
+    unsubscribe: null as (() => void) | null,
+  }),
+  actions: {
+    async loadItems() {
+      const { $db } = useNuxtApp();
 
-  const loadItems = async () => {
-    if ($db) {
-      const querySnapshot = await getDocs(collection($db, "items"));
-      items.value = querySnapshot.docs
-        .map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }))
-        .reverse();
-    }
-  };
-
-  const voteItem = async ({ id, type }: IVote) => {
-    const item = items.value.find((item) => item.id === id);
-    if (item) {
-      item.votes[type]++;
-      const itemRef = doc($db, "items", item.id);
-      await updateDoc(itemRef, {
-        lastUpdated: new Date().toISOString(),
-        votes: item.votes,
+      const itemsCollection = collection($db, "items");
+      this.unsubscribe = onSnapshot(itemsCollection, (snapshot) => {
+        this.items = snapshot.docs
+          .map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }))
+          .reverse() as IItem[];
       });
-    }
-  };
-
-  return { items, voteItem, loadItems };
+    },
+    async voteItem({ id, type }: IVote) {
+      const { $db } = useNuxtApp();
+      const itemRef = doc($db, "items", id);
+      const item = this.items.find((item) => item.id === id);
+      if (item) {
+        if (type === "positive") {
+          item.votes.positive += 1;
+        } else {
+          item.votes.negative += 1;
+        }
+        await updateDoc(itemRef, {
+          votes: item.votes,
+          lastUpdated: new Date().toISOString(),
+        });
+      }
+    },
+    unsubscribeItems() {
+      if (this.unsubscribe) {
+        this.unsubscribe();
+        this.unsubscribe = null;
+      }
+    },
+  },
 });
