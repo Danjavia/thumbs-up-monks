@@ -51,16 +51,16 @@ const timeAgo = computed(() =>
       role="none"
     />
 
-    <div class="list-item__content relative flex justify-between items-center">
-      <div class="list-item__header">
+    <div class="list-item__content relative flex justify-between">
+      <div class="list-item__header flex-1">
         <h2 class="text-white text-2xl font-[400]">{{ name }}</h2>
-        <p class="font-thin text-xs overflow-ellipsis">{{ description }}</p>
+        <p class="font-thin text-xs line-clamp-2">{{ description }}</p>
       </div>
       <div class="list-item__footer">
-        <div>
-          <span>{{ timeAgo }} in {{ category }}</span>
+        <div class="text-right mb-3 text-xs font-semibold">
+          {{ timeAgo }} in {{ category }}
         </div>
-        <div class="list-item__actions flex items-center">
+        <div class="list-item__actions flex items-center justify-end">
           <button @click="vote('positive')" class="btn like-btn">
             <img src="assets/img/thumbs-up.svg" alt="thumbs up" />
           </button>
@@ -112,8 +112,7 @@ const timeAgo = computed(() =>
 }
 
 .list-item__footer {
-  justify-content: space-between;
-  align-items: center;
+  width: 34%;
 }
 
 .list-item__actions .btn {
@@ -173,13 +172,22 @@ const timeAgo = computed(() =>
   border: 1px solid rgba(var(--color-yellow-negative), 1);
 }
 
-.vote-btn {
+.btn.vote-btn {
   @apply bg-gray-800 text-white border border-white px-4 text-lg;
   height: 45px;
   transition: background-color 0.3s;
+  margin-right: 0;
 }
 
 .vote-btn:hover {
   @apply bg-gray-600;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>
