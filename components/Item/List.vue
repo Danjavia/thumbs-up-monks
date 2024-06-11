@@ -27,8 +27,18 @@ const emit = defineEmits<{
   (e: "vote", payload: { id: string; type: "positive" | "negative" }): void;
 }>();
 
-const voteNow = (type: "positive" | "negative") => {
-  emit("vote", { id: props.id, type });
+const selectedVote = ref<"positive" | "negative" | null>(null);
+const voteSubmitted = ref(false);
+
+const voteNow = () => {
+  if (selectedVote.value) {
+    emit("vote", { id: props.id, type: selectedVote.value });
+    voteSubmitted.value = true;
+  }
+};
+
+const toggleVote = (type: "positive" | "negative") => {
+  selectedVote.value = selectedVote.value === type ? null : type;
 };
 
 const timeAgo = computed(() =>
@@ -36,6 +46,11 @@ const timeAgo = computed(() =>
     addSuffix: true,
   }),
 );
+
+const resetVote = () => {
+  selectedVote.value = null;
+  voteSubmitted.value = false;
+};
 </script>
 
 <template>
@@ -73,16 +88,37 @@ const timeAgo = computed(() =>
       </div>
       <div class="list-item__footer">
         <div class="text-right mb-3 text-xs font-semibold">
-          {{ timeAgo }} in {{ category }}
+          {{ voteSubmitted ? "Thank you for your vote!" : timeAgo }} in
+          {{ category }}
         </div>
         <div class="list-item__actions flex items-center justify-end">
-          <button @click="voteNow('positive')" class="btn like-btn">
+          <button
+            @click="toggleVote('positive')"
+            :class="[
+              'btn',
+              'like-btn',
+              { selected: selectedVote === 'positive' },
+            ]"
+          >
             <img src="assets/img/thumbs-up.svg" alt="thumbs up" />
           </button>
-          <button @click="voteNow('negative')" class="btn dislike-btn">
+          <button
+            @click="toggleVote('negative')"
+            :class="[
+              'btn',
+              'dislike-btn',
+              { selected: selectedVote === 'negative' },
+            ]"
+          >
             <img src="assets/img/thumbs-down.svg" alt="thumbs down" />
           </button>
-          <button class="btn vote-btn">Vote Now</button>
+          <button
+            @click="voteSubmitted ? resetVote() : voteNow()"
+            :disabled="!selectedVote"
+            class="btn vote-btn"
+          >
+            {{ voteSubmitted ? "Vote Again" : "Vote Now" }}
+          </button>
         </div>
       </div>
     </div>
@@ -194,6 +230,12 @@ const timeAgo = computed(() =>
   margin-right: 0;
 }
 
+.btn.vote-btn:disabled {
+  @apply bg-gray-800/50 text-white border border-white px-4 text-lg;
+  cursor: not-allowed;
+  transition: background-color 0.3s;
+}
+
 .vote-btn:hover {
   @apply bg-gray-600;
 }
@@ -204,5 +246,9 @@ const timeAgo = computed(() =>
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.btn.selected {
+  border: 2px solid white;
 }
 </style>
