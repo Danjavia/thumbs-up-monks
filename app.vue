@@ -1,3 +1,12 @@
+<script lang="ts" setup>
+import { checkAndCreateCollection } from "~/fixtures/uploadData";
+
+onMounted(() => {
+  // Check if exists data in DB, else populate with data.ts
+  checkAndCreateCollection();
+});
+</script>
+
 <template>
   <div>
     <NuxtLayout>

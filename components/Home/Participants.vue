@@ -7,7 +7,7 @@ const viewMethod = (option: string) => {
 
 <template>
   <div class="participants">
-    <div class="flex justify-between items-center">
+    <div class="relative flex justify-between items-center z-10">
       <h4 class="text-3xl">Previous Rulings</h4>
       <Dropdown
         :options="['List', 'Grid']"

@@ -49,7 +49,7 @@ const selectOption = (option: string) => {
 <style scoped>
 .dropdown {
   position: relative;
-  display: inline-block;
+  display: none;
 }
 
 .dropdown-button {
@@ -92,6 +92,7 @@ const selectOption = (option: string) => {
 @media all and (min-width: 768px) {
   .dropdown {
     width: 131px;
+    display: inline-block;
   }
 }
 

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import { defineProps } from "vue";
 import { formatDistanceToNow } from "date-fns";
 
 const props = defineProps<{
@@ -23,7 +22,15 @@ const negativePercentage = computed(() =>
   ((negativeVotes.value / totalVotes.value) * 100).toFixed(1),
 );
 
+const emit = defineEmits<{
+  (e: "vote", payload: { name: string; type: "positive" | "negative" }): void;
+}>();
+
 const vote = (type: "positive" | "negative") => {
+  emit("vote", { name: props.name, type });
+};
+
+const voteNow = (type: "positive" | "negative") => {
   if (type === "positive") positiveVotes.value++;
   else negativeVotes.value++;
 };
@@ -40,6 +47,18 @@ const timeAgo = computed(() =>
     <div
       class="bg-custom-gradient absolute top-0 right-0 flex justify-center items-center h-full w-[96%]"
     />
+
+    <div>
+      <div
+        v-if="positivePercentage > negativePercentage"
+        class="absolute top-0 left-0 btn like-btn"
+      >
+        <img src="assets/img/thumbs-up.svg" alt="thumbs up" />
+      </div>
+      <div v-else class="absolute top-0 left-0 btn dislike-btn">
+        <img src="assets/img/thumbs-down.svg" alt="thumbs down" />
+      </div>
+    </div>
 
     <NuxtImg
       sizes="100vw sm:50vw md:100vw"
@@ -61,10 +80,10 @@ const timeAgo = computed(() =>
           {{ timeAgo }} in {{ category }}
         </div>
         <div class="list-item__actions flex items-center justify-end">
-          <button @click="vote('positive')" class="btn like-btn">
+          <button @click="voteNow('positive')" class="btn like-btn">
             <img src="assets/img/thumbs-up.svg" alt="thumbs up" />
           </button>
-          <button @click="vote('negative')" class="btn dislike-btn">
+          <button @click="voteNow('negative')" class="btn dislike-btn">
             <img src="assets/img/thumbs-down.svg" alt="thumbs down" />
           </button>
           <button class="btn vote-btn">Vote Now</button>

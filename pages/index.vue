@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Participants from "~/components/Home/Participants.vue";
-
 const route = useRoute();
 </script>
 
