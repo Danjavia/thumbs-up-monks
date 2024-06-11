@@ -26,11 +26,9 @@ watch(internalView, (newVal) => {
 
 // Votes management
 const itemStore = useItemStore();
-const items = computed(() => itemStore.items);
 
 const voteNow = async (data: IVote) => {
   await itemStore.voteItem(data);
-  await itemStore.loadItems();
 };
 
 onMounted(() => {
@@ -46,7 +44,7 @@ onBeforeUnmount(() => {
   <div class="view-layer relative">
     <ViewList v-if="currentView === 'List'">
       <ItemList
-        v-for="item in items"
+        v-for="item in itemStore.items"
         :id="item?.id"
         :key="item.name"
         :name="item.name"
@@ -60,7 +58,7 @@ onBeforeUnmount(() => {
     </ViewList>
     <ViewGrid v-else>
       <ItemGrid
-        v-for="item in items"
+        v-for="item in itemStore.items"
         :id="item?.id"
         :key="item.name"
         :name="item.name"

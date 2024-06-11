@@ -12,15 +12,12 @@ const props = defineProps<{
   votes: { positive: number; negative: number };
 }>();
 
-const positiveVotes = ref(props.votes.positive);
-const negativeVotes = ref(props.votes.negative);
-
-const totalVotes = computed(() => positiveVotes.value + negativeVotes.value);
+const totalVotes = computed(() => props.votes.positive + props.votes.negative);
 const positivePercentage = computed(() =>
-  ((positiveVotes.value / totalVotes.value) * 100).toFixed(1),
+  ((props.votes.positive / totalVotes.value) * 100).toFixed(1),
 );
 const negativePercentage = computed(() =>
-  ((negativeVotes.value / totalVotes.value) * 100).toFixed(1),
+  ((props.votes.negative / totalVotes.value) * 100).toFixed(1),
 );
 
 const emit = defineEmits<{

@@ -19,6 +19,8 @@ export const useItemStore = defineStore("item", {
             ...doc.data(),
           }))
           .reverse() as IItem[];
+
+        console.log("ITEMS ==>", this.items);
       });
     },
     async voteItem({ id, type }: IVote) {
@@ -31,10 +33,15 @@ export const useItemStore = defineStore("item", {
         } else {
           item.votes.negative += 1;
         }
+
+        // this.items = [...this.items.filter((i) => i.id !== id), item];
+
         await updateDoc(itemRef, {
           votes: item.votes,
           lastUpdated: new Date().toISOString(),
         });
+
+        await this.loadItems();
       }
     },
     unsubscribeItems() {
