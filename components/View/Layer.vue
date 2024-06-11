@@ -30,6 +30,7 @@ const items = computed(() => itemStore.items);
 
 const voteNow = async (data: IVote) => {
   await itemStore.voteItem(data);
+  await itemStore.loadItems();
 };
 
 onMounted(() => {
