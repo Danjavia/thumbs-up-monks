@@ -28,29 +28,29 @@ describe("ItemList", () => {
     );
   });
 
-  // it("increments positive votes", async () => {
-  //   const component = await mountSuspended(ItemList, {
-  //     props: mockProps,
-  //   });
-  //
-  //   const voteButton = component.find(".like-btn");
-  //   await voteButton.trigger("click");
-  //
-  //   const positiveVotes = component.vm.positiveVotes;
-  //   expect(positiveVotes).toBe(25); // Incremented twice
-  // });
+  it("increments positive votes", async () => {
+    const component = await mountSuspended(ItemList, {
+      props: mockProps,
+    });
 
-  // it("emits vote event", async () => {
-  //   const component = await mountSuspended(ItemList, {
-  //     props: mockProps,
-  //   });
-  //
-  //   const voteButton = component.find(".like-btn");
-  //   await voteButton.trigger("click");
-  //
-  //   expect(component.emitted().vote).toBeTruthy();
-  //   expect(component.emitted().vote[0]).toEqual([
-  //     { id: "1", type: "positive" },
-  //   ]);
-  // });
+    const voteButton = component.find(".like-btn");
+    await voteButton.trigger("click");
+
+    const positiveVotes = component.vm.positiveVotes;
+    expect(positiveVotes).toBe(25); // Incremented twice
+  });
+
+  it("emits vote event", async () => {
+    const component = await mountSuspended(ItemList, {
+      props: mockProps,
+    });
+
+    const voteButton = component.find(".like-btn");
+    await voteButton.trigger("click");
+
+    expect(component.emitted().vote).toBeTruthy();
+    expect(component.emitted().vote[0]).toEqual([
+      { id: "1", type: "positive" },
+    ]);
+  });
 });
