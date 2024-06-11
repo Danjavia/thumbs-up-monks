@@ -56,6 +56,7 @@ onMounted(() => {
     <ViewGrid v-else>
       <ItemGrid
         v-for="item in items"
+        :id="item?.id"
         :key="item.name"
         :name="item.name"
         :description="item.description"
@@ -63,6 +64,7 @@ onMounted(() => {
         :picture="item.picture"
         :lastUpdated="item.lastUpdated"
         :votes="item.votes"
+        @vote="voteNow"
       />
     </ViewGrid>
   </div>

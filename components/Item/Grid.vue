@@ -14,8 +14,6 @@ const props = defineProps<{
 
 const positiveVotes = ref(props.votes.positive);
 const negativeVotes = ref(props.votes.negative);
-const voteSelected = ref<"positive" | "negative" | null>(null);
-const voteSubmitted = ref(false);
 
 const totalVotes = computed(() => positiveVotes.value + negativeVotes.value);
 const positivePercentage = computed(() =>
@@ -29,15 +27,18 @@ const emit = defineEmits<{
   (e: "vote", payload: { id: string; type: "positive" | "negative" }): void;
 }>();
 
+const selectedVote = ref<"positive" | "negative" | null>(null);
+const voteSubmitted = ref(false);
+
 const voteNow = () => {
-  if (voteSelected.value) {
-    emit("vote", { id: props.id, type: voteSelected.value });
-    voteSelected.value = null;
+  if (selectedVote.value) {
+    emit("vote", { id: props.id, type: selectedVote.value });
+    voteSubmitted.value = true;
   }
 };
 
-const selectVote = (type: "positive" | "negative") => {
-  voteSelected.value = voteSelected.value === type ? null : type;
+const toggleVote = (type: "positive" | "negative") => {
+  selectedVote.value = selectedVote.value === type ? null : type;
 };
 
 const timeAgo = computed(() =>
@@ -45,6 +46,11 @@ const timeAgo = computed(() =>
     addSuffix: true,
   }),
 );
+
+const resetVote = () => {
+  selectedVote.value = null;
+  voteSubmitted.value = false;
+};
 </script>
 
 <template>
@@ -56,7 +62,6 @@ const timeAgo = computed(() =>
       sizes="100vw sm:50vw md:400px"
       role="none"
     />
-
     <div class="grid-item__content">
       <div class="flex">
         <div class="flex items-end">
@@ -76,46 +81,43 @@ const timeAgo = computed(() =>
           </h2>
         </div>
       </div>
-
       <div class="w-2/3 mx-auto">
         <p class="font-thin text-xs line-clamp-2">
           {{ props.description }}
         </p>
       </div>
-
       <div class="mt-3 w-[90%]">
         <div class="text-right mb-3 text-xs font-semibold">
           {{ voteSubmitted ? "Thank you for your vote!" : timeAgo }} in
-          {{ category }}
+          {{ props.category }}
         </div>
-
         <div class="grid-item__actions">
           <button
-            @click="selectVote('positive')"
+            @click="toggleVote('positive')"
             :class="[
               'btn',
               'like-btn',
-              { selected: voteSelected === 'positive' },
+              { selected: selectedVote === 'positive' },
             ]"
           >
             <img src="assets/img/thumbs-up.svg" alt="thumbs up" />
           </button>
           <button
-            @click="selectVote('negative')"
+            @click="toggleVote('negative')"
             :class="[
               'btn',
               'dislike-btn',
-              { selected: voteSelected === 'negative' },
+              { selected: selectedVote === 'negative' },
             ]"
           >
             <img src="assets/img/thumbs-down.svg" alt="thumbs down" />
           </button>
           <button
-            @click="voteNow"
-            :disabled="!voteSelected"
+            @click="voteSubmitted ? resetVote() : voteNow()"
+            :disabled="!selectedVote"
             class="btn vote-btn"
           >
-            Vote Now
+            {{ voteSubmitted ? "Vote Again" : "Vote Now" }}
           </button>
         </div>
       </div>
