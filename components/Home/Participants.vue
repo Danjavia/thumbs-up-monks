@@ -18,16 +18,7 @@ const viewMethod = (option: string) => {
 
     <ViewLayer :currentView="currentView" />
 
-    <SwiperContainer>
-      <SwiperItem>Hola mundo</SwiperItem>
-      <SwiperItem>Hola mundo</SwiperItem>
-      <SwiperItem>Hola mundo</SwiperItem>
-      <SwiperItem>Hola mundo</SwiperItem>
-      <SwiperItem>Hola mundo</SwiperItem>
-      <SwiperItem>Hola mundo</SwiperItem>
-      <SwiperItem>Hola mundo</SwiperItem>
-      <SwiperItem>Hola mundo</SwiperItem>
-    </SwiperContainer>
+    <SwiperContainer />
   </div>
 </template>
 

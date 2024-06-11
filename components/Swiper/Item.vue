@@ -6,8 +6,8 @@
 
 <style>
 .swiper-slide {
-  min-width: 300px;
-  height: 200px;
+  min-width: 350px;
+  height: 350px;
   background-color: lightblue;
   display: flex;
   justify-content: center;

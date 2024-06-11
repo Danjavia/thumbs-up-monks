@@ -245,6 +245,7 @@ const resetVote = () => {
   padding: 0.5rem 1rem;
   margin-left: 0.3rem;
   margin-right: 0;
+  height: 45px;
   transition: background-color 0.3s;
 }
 
