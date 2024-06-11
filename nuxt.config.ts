@@ -50,6 +50,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@pinia/nuxt",
     "@nuxt/image",
+    "@nuxthub/core",
   ],
   formkit: {
     autoImport: true,
