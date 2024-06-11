@@ -1,7 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  css: ["~/assets/css/main.css"],
+  googleFonts: {
+    families: {
+      Lato: [300, 400, 700],
+    },
+  },
+  css: ["~/assets/css/reset.css", "~/assets/css/main.css"],
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -12,15 +17,18 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "@nuxthub/core",
     "@nuxt/test-utils/module",
-    "@nuxt/ui",
     "@formkit/nuxt",
+    "@nuxtjs/google-fonts",
+    "@nuxtjs/tailwindcss",
+    "@pinia/nuxt",
+    "@nuxt/image"
   ],
+  // ui: {
+  //   global: false,
+  // },
   formkit: {
     // Experimental support for auto loading (see note):
     autoImport: true,
-  },
-  ui: {
-    global: true,
   },
   tailwindcss: {
     exposeConfig: true,

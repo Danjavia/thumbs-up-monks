@@ -1,104 +1,10 @@
 <script setup lang="ts">
-import Counter from "~/ui/components/Counter.vue";
-import CountryList from "~/ui/components/CountryList.vue";
+import Participants from "~/components/Home/Participants.vue";
 
 const route = useRoute();
 </script>
 
 <template>
-  <nav class="nav" role="navigation">
-    <div class="max-centered">
-      <h1 class="nav__logo">Rule of thumb.</h1>
-      <button class="nav__hamburger icon-button" alt="Open Menu">
-        <svg width="25" height="20" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M0 0h25v4H0V0zm0 8h25v4H0V8zm0 8h25v4H0v-4z"
-            fill="#FFF"
-            fill-rule="nonzero"
-          />
-        </svg>
-      </button>
-      <ul class="nav__links">
-        <li>
-          <a href="#">Past Trials</a>
-        </li>
-        <li>
-          <a href="#">How It Works</a>
-        </li>
-        <li>
-          <a href="#">Login / Sign Up</a>
-        </li>
-        <li>
-          <form action="javascript:void(0)">
-            <input class="nav__search-input" aria-label="search" type="text" />
-            <button class="nav__search icon-button" alt="Search" type="submit">
-              <img src="assets/img/search.svg" alt="search" />
-            </button>
-          </form>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <header class="hero">
-    <img
-      class="hero__background"
-      srcset="
-        assets/img/pope-francis.png      750w,
-        assets/img/pope-francis.@2x.png 1440w
-      "
-      sizes="(min-width: 750px) 1440px, 100vw"
-      src="assets/img/pope-francis.png"
-      alt="Pope Francis"
-    />
-    <div class="max-centered">
-      <div class="hero__featured-card">
-        <div class="featured-card__glass-background"></div>
-        <div class="featured-card__content">
-          <p class="featured-card__hairline">What's your opinion on</p>
-          <h2 class="featured-card__title">Pope Francis?</h2>
-          <p class="featured-card__desc">
-            He’s talking tough on clergy sexual abuse, or is he just another
-            pervert protector? (thumbs down) or a true pedophile punishing
-            pontiff? (thumbs up)
-          </p>
-          <p class="featured-card__more-info">
-            <a href="http://wikipedia.com">
-              <svg
-                class="featured-card__more-info-icon"
-                preserveAspectRatio
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 27 18"
-              >
-                <path
-                  d="M27 .303c0 .1-.032.2-.09.28a.255.255 0 01-.2.125 2.46 2.46 0 00-1.453.602 5.676 5.676 0 00-1.166 1.952l-6.127 14.533c-.04.135-.152.203-.337.203a.374.374 0 01-.337-.203l-3.436-7.564-3.952 7.564a.374.374 0 01-.337.203.34.34 0 01-.349-.203L3.196 3.262a5.052 5.052 0 00-1.19-1.89A3.161 3.161 0 00.267.708.23.23 0 01.086.6.378.378 0 010 .355C0 .118.064 0 .192 0 .73 0 1.29.025 1.876.075c.544.053 1.056.078 1.536.078.49 0 1.067-.026 1.732-.078C5.839.025 6.456 0 6.994 0c.128 0 .192.118.192.355 0 .235-.04.352-.119.352a2.308 2.308 0 00-1.268.43c-.297.22-.47.581-.463.963.015.263.08.521.192.757l4.975 11.826 2.824-5.614-2.631-5.807A7.637 7.637 0 009.53 1.257a2.274 2.274 0 00-1.382-.55A.208.208 0 017.986.6a.4.4 0 01-.078-.245c0-.237.054-.355.168-.355.494-.002.987.023 1.477.075.46.054.92.08 1.382.078.48 0 .988-.026 1.525-.078C13.013.025 13.558 0 14.094 0c.128 0 .192.118.192.355 0 .235-.038.352-.119.352-1.073.078-1.61.399-1.61.963.047.414.174.814.373 1.175l1.74 3.72 1.732-3.403c.209-.37.333-.786.36-1.215 0-.775-.536-1.188-1.61-1.24-.097 0-.144-.117-.144-.352a.44.44 0 01.071-.24c.05-.077.098-.115.145-.115.385 0 .857.025 1.418.075.536.053.978.078 1.322.078a13.6 13.6 0 001.093-.065A16.806 16.806 0 0120.584 0c.095 0 .142.1.142.303 0 .27-.088.405-.263.405-.54.036-1.061.224-1.508.544a6.937 6.937 0 00-1.423 2.01l-2.308 4.492 3.125 6.702 4.614-11.294c.149-.36.23-.745.24-1.137 0-.828-.537-1.267-1.61-1.317-.097 0-.145-.118-.145-.353 0-.237.071-.355.216-.355.392 0 .857.025 1.394.075.496.053.914.078 1.25.078.409-.003.818-.03 1.224-.078.483-.05.915-.075 1.3-.075.111 0 .168.1.168.303z"
-                  fill="#FFF"
-                  fill-rule="nonzero"
-                /></svg
-              >More information
-            </a>
-          </p>
-          <p class="featured-card__cta">What’s Your Veredict?</p>
-          <div class="featured-card__buttons">
-            <button class="icon-button" aria-label="thumbs up">
-              <img src="assets/img/thumbs-up.svg" alt="thumbs up" />
-            </button>
-            <button class="icon-button" aria-label="thumbs down">
-              <img src="assets/img/thumbs-down.svg" alt="thumbs down" />
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="hero__closing-gauge">
-      <div class="closing-gauge__left">
-        <span class="closing-gauge__title">closing in</span>
-      </div>
-      <div class="closing-gauge__right">
-        <span class="closing-gauge__number">22</span>
-        <span class="closing-gauge__desc">days</span>
-      </div>
-    </div>
-  </header>
   <div class="max-centered">
     <aside class="banner banner-top" role="doc-tip" aria-label="Speak Out">
       <div class="banner__left">
@@ -120,11 +26,15 @@ const route = useRoute();
         </svg>
       </button>
     </aside>
+
     <main role="main">
       <!-- Start: Implementation -->
-      👉 Your code goes here 👈
+      <div class="max-centered">
+        <Participants />
+      </div>
       <!-- End: Implementation -->
     </main>
+
     <aside
       class="banner banner-bottom"
       role="doc-tip"
@@ -150,458 +60,360 @@ const route = useRoute();
         <button class="banner__cta">Submit a name</button>
       </div>
     </aside>
+
     <hr role="separator" />
-    <footer class="footer">
-      <div class="footer__links">
-        <ul>
-          <li>
-            <a href="#">Terms and Conditions</a>
-          </li>
-          <li>
-            <a href="#">Privacy Policy</a>
-          </li>
-          <li>
-            <a href="#">Contact Us</a>
-          </li>
-        </ul>
-      </div>
-      <div class="footer__social">
-        <span>Follow us</span>
-        <ul>
-          <li>
-            <a href="#">
-              <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M24 1.325v21.35c0 .732-.593 1.325-1.325 1.325H16.56v-9.294h3.12l.467-3.622H16.56V8.771c0-1.048.292-1.763 1.796-1.763h1.918v-3.24a25.663 25.663 0 00-2.795-.143c-2.766 0-4.659 1.688-4.659 4.788v2.671H9.691v3.622h3.128V24H1.325A1.325 1.325 0 010 22.676V1.325A1.325 1.325 0 011.325 0h21.35A1.325 1.325 0 0124 1.325z"
-                  fill="#262626"
-                  fill-rule="nonzero"
-                />
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <svg width="26" height="23" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M23.329 6.204c.01.23.01.458.01.687A15.182 15.182 0 01-.008 19.688c.421.05.845.075 1.27.073a10.7 10.7 0 006.627-2.289 5.335 5.335 0 01-4.984-3.704c.798.151 1.62.12 2.404-.094a5.346 5.346 0 01-4.276-5.233v-.073a5.396 5.396 0 002.413.666 5.357 5.357 0 01-1.654-7.127A15.15 15.15 0 0012.79 7.484a5.898 5.898 0 01-.135-1.217 5.336 5.336 0 019.228-3.652 10.612 10.612 0 003.392-1.29 5.368 5.368 0 01-2.351 2.955 10.811 10.811 0 003.07-.843 10.868 10.868 0 01-2.664 2.767z"
-                  fill="#262626"
-                  fill-rule="nonzero"
-                />
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </footer>
   </div>
 </template>
 
 <style>
-/*
-  Based on TailwindCSS recommendations,
-  consider using classes instead of the `@apply` directive
-  @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
-*/
-:root {
-  --color-green-positive: 60, 187, 180;
-  --color-yellow-negative: 249, 173, 29;
-  --color-dark-background: rgba(0, 0, 0, 0.4);
-  --color-darker-background: rgba(0, 0, 0, 0.6);
-  --color-darker-gray: rgba(51, 51, 51, 1);
-  --color-dark-gray: rgba(70, 70, 70, 1);
-  --color-light-gray: rgba(235, 235, 235, 1);
-  --color-light-background: rgba(255, 255, 255, 0.4);
-  --color-lighter-background: rgba(255, 255, 255, 0.8);
-  --color-white: rgba(255, 255, 255, 1);
-}
-html,
-body {
-  @apply w-full bg-[color:var(--color-white)] text-xs font-normal m-0;
-  font-family: "Lato", sans-serif;
-}
-body {
-  @apply relative;
-}
-a,
-a:visited {
-  @apply text-[color:var(--color-white)];
-}
-button {
-  font-family: "Lato", sans-serif;
-}
-ul {
-  @apply m-0 p-0;
-  list-style: none;
-}
 hr[role="separator"] {
-  @apply border-b-[color:var(--color-dark-gray)] mx-4 my-6 border-b-2 border-0 border-none border-dotted;
+  border: 0 none;
+  border-bottom: 2px dotted var(--color-dark-gray);
+  margin: 1.5rem 1rem;
 }
-.nav {
-  @apply fixed z-[2] flex w-[calc(100vw_-_2rem)] min-h-[10rem] justify-between px-4 py-0 top-0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.8) 0%,
-    rgba(0, 0, 0, 0) 80%
-  );
-}
+
 .icon-button {
-  @apply bg-transparent p-0 border-0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
 }
+
 .icon-button[aria-label="thumbs up"] {
-  @apply bg-[rgba(var(--color-green-positive),0.8)] hover:bg-[rgba(var(--color-green-positive),1)];
+  background-color: rgba(var(--color-green-positive), 0.8);
 }
+
+.icon-button[aria-label="thumbs up"]:hover {
+  background-color: rgba(var(--color-green-positive), 1);
+}
+
 .icon-button[aria-label="thumbs down"] {
-  @apply bg-[rgba(var(--color-yellow-negative),0.8)] hover:bg-[rgba(var(--color-yellow-negative),1)];
+  background-color: rgba(var(--color-yellow-negative), 0.8);
 }
+
+.icon-button[aria-label="thumbs down"]:hover {
+  background-color: rgba(var(--color-yellow-negative), 1);
+}
+
 .icon-button > img {
-  @apply w-full h-full;
+  width: 100%;
+  height: 100%;
 }
-.nav__logo {
-  @apply text-[color:var(--color-white)] text-[2rem] font-normal leading-10 mt-10 mb-0 mx-0;
-}
-.nav__hamburger {
-  @apply relative w-[25px] h-5 right-4 top-8;
-}
-.nav__links {
-  @apply fixed flex w-screen h-[calc(100vh_-_4rem)] flex-col bg-[color:var(--color-darker-background)] translate-x-[100vw] pt-16 pb-8 px-0 top-0 inset-x-0;
-}
+
 .nav__links li {
-  @apply w-full text-[2rem] text-center mx-0 my-12 last:-order-1;
+  width: 100%;
+  margin: 3rem 0;
+  font-size: 2rem;
+  text-align: center;
 }
+
 .nav__links a {
-  @apply text-[color:var(--color-white)] no-underline;
+  color: var(--color-white);
+  text-decoration: none;
 }
+
 .nav__hamburger:focus + .nav__links,
 .nav__links:focus-within {
-  @apply translate-x-0;
+  transform: translateX(0);
 }
-.nav__search {
-  @apply w-6 h-6 ml-2;
+
+.nav__links li:last-child {
+  order: -1;
 }
-.nav__search-input {
-  @apply w-[25vw] border-b-[color:var(--color-white)] bg-transparent text-[color:var(--color-white)] text-2xl transition-[width] duration-[0.2s] ease-[ease-in] rounded-none border-b-2 border-0 border-solid focus:w-[60vw];
-  font-family: "Lato", sans-serif;
-}
-.nav__search-input:focus {
-  outline: 0 none;
-}
-.hero {
-  @apply relative overflow-hidden h-[80vw] min-h-[35rem] max-h-[38rem] mb-8;
-}
-.hero__background {
-  @apply absolute left-[-35vw] w-[160vw] h-full object-cover;
-}
-.hero__featured-card {
-  @apply relative overflow-hidden w-[55vw] max-h-[25rem] left-4 top-[5.5rem];
-}
-.hero__closing-gauge {
-  @apply absolute flex w-full h-12 bg-[color:var(--color-light-background)] bottom-0;
-}
-.featured-card__glass-background {
-  @apply absolute top-[-20%] left-[-20%] w-[140%] h-[140%] blur-lg;
-  background:
-    center no-repeat
-      linear-gradient(
-        var(--color-dark-background),
-        var(--color-dark-background)
-      ),
-    -25vw 0/160vw no-repeat url("../assets/img/pope-francis.png");
-}
-.featured-card__content {
-  @apply relative text-[color:var(--color-white)] p-4;
-}
-.featured-card__hairline {
-  @apply font-light whitespace-nowrap m-0;
-}
-.featured-card__title {
-  @apply text-5xl font-normal leading-none m-0;
-}
-.featured-card__desc {
-  @apply overflow-hidden max-h-[10.5rem] text-xl font-light text-ellipsis mx-0 my-4;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 6;
-}
-.featured-card__cta {
-  @apply font-bold;
-}
-.featured-card__buttons {
-  @apply flex justify-between mr-[-1rem] mb-[-1rem] ml-[-1rem] mt-0;
-}
+
 .featured-card__buttons > .icon-button {
-  @apply w-6/12 h-11;
+  width: 50%;
+  height: 2.75rem;
 }
+
 .featured-card__buttons > .icon-button > img {
-  @apply max-w-[1.25rem];
+  max-width: 1.25rem;
 }
-.closing-gauge__left {
-  @apply relative flex w-[30%] items-center justify-end bg-[color:var(--color-dark-background)] text-[color:var(--color-white)] font-light uppercase pl-0 pr-1 py-0 after:absolute after:right-[-0.5rem] after:block after:w-0 after:h-0 after:border-l-[color:var(--color-dark-background)] after:content-['_'] after:border-l-8 after:border-y-4 after:border-y-transparent after:border-solid;
-}
-.closing-gauge__right {
-  @apply flex items-center justify-end pl-3 pr-0 py-0;
-}
-.closing-gauge__number {
-  @apply text-[color:var(--color-dark-gray)] text-2xl font-normal;
-}
-.closing-gauge__desc {
-  @apply text-[color:var(--color-dark-gray)] text-2xl font-light;
-}
+
 .banner {
-  @apply relative flex overflow-hidden items-center justify-between bg-[color:var(--color-light-gray)] m-4 p-4;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 1rem;
+  background-color: var(--color-light-gray);
 }
+
 .banner__background {
-  @apply absolute w-full object-cover opacity-20 pointer-events-none left-0 top-0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  object-fit: cover;
+  opacity: 0.2;
+  pointer-events: none;
 }
+
 .banner-top .banner__left {
-  @apply basis-2/5 pr-4;
+  flex-basis: 40%;
+  padding-right: 1rem;
 }
+
 .banner-top .banner__left > .banner__hairline {
-  @apply text-[color:var(--color-dark-gray)] text-xl font-light tracking-[-0.07rem];
+  color: var(--color-dark-gray);
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: -0.07rem;
 }
+
 .banner-top .banner__left > .banner__title {
-  @apply block text-[color:var(--color-dark-gray)] text-[2rem] font-bold tracking-[-0.05rem];
+  display: block;
+  color: var(--color-dark-gray);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.05rem;
 }
+
 .banner-top .banner__right {
-  @apply basis-3/5;
+  flex-basis: 60%;
 }
+
 .banner-top .banner__text {
-  @apply text-[color:var(--color-dark-gray)] text-xl font-light tracking-[-0.05rem] m-0;
+  margin: 0;
+  color: var(--color-dark-gray);
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: -0.05rem;
 }
+
 .banner-bottom {
-  @apply flex-col mt-8 px-12 py-4;
+  flex-direction: column;
+  padding: 1rem 3rem;
+  margin-top: 2rem;
 }
+
 .banner-bottom .banner__heading {
-  @apply relative text-[color:var(--color-dark-gray)] text-[2rem] font-normal text-center mt-0 mb-4 mx-0;
+  position: relative;
+  margin: 0 0 1rem;
+  color: var(--color-dark-gray);
+  font-size: 2rem;
+  font-weight: 400;
+  text-align: center;
 }
+
 .banner-bottom .banner__right {
-  @apply w-full;
+  width: 100%;
 }
+
 .banner-bottom .banner__cta {
-  @apply relative block w-full border-[color:var(--color-darker-background)] text-[color:var(--color-darker-gray)] text-2xl px-0 py-4 border-2 border-solid;
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 1rem 0;
+  border: 2px solid var(--color-darker-background);
   background: transparent;
+  color: var(--color-darker-gray);
+  font-size: 1.5rem;
 }
+
 main[role="main"] {
-  @apply mt-8 px-4 py-0;
+  padding: 0 1rem;
+  margin-top: 2rem;
 }
+
 main h2,
 main h3,
 main h4 {
-  @apply text-[color:var(--color-dark-gray)] font-light;
+  color: var(--color-dark-gray);
+  font-weight: 300;
 }
+
 main h2 {
-  @apply text-[2rem] mt-0 mb-8 mx-0;
+  margin: 0 0 2rem;
+  font-size: 2rem;
 }
+
 .footer {
-  @apply flex items-end justify-between mt-0 mb-12 mx-4;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: 0 1rem 3rem;
 }
+
 .footer__links li {
-  @apply text-xl px-0 py-2;
+  padding: 0.5rem 0;
+  font-size: 1.25rem;
 }
+
 .footer__links li a {
-  @apply text-[color:var(--color-dark-gray)] no-underline hover:text-[color:var(--color-darker-gray)] hover:underline;
+  color: var(--color-dark-gray);
+  text-decoration: none;
 }
+
+.footer__links li a:hover {
+  color: var(--color-darker-gray);
+  text-decoration: underline;
+}
+
 .footer__social > span {
-  @apply text-[color:var(--color-darker-gray)] text-xl text-right;
+  color: var(--color-darker-gray);
+  font-size: 1.25rem;
+  text-align: right;
 }
+
 .footer__social > ul {
-  @apply flex mt-4;
+  display: flex;
+  margin-top: 1rem;
 }
+
 .footer__social > ul > li {
-  @apply mr-4;
+  margin-right: 1rem;
 }
-.featured-card__more-info {
-  @apply hidden;
-}
-.featured-card__more-info-icon {
-  @apply w-6 h-4 mr-2;
-}
+
 .banner-top .icon-button {
-  @apply hidden;
+  display: none;
 }
+
 .max-centered {
-  @apply contents;
+  display: contents;
 }
+
 @media all and (min-width: 500px) {
   .banner-top .banner__left {
-    @apply basis-[30%];
+    flex-basis: 30%;
   }
+
   .banner-top .banner__right {
-    @apply basis-[70%];
+    flex-basis: 70%;
   }
 }
+
 @media all and (min-width: 768px) {
   html,
   body {
-    @apply text-sm;
+    font-size: 14px;
   }
-  .hero {
-    @apply max-h-[38rem];
-  }
-  .hero__background {
-    @apply top-[-6.5rem] w-[110vw] h-auto left-0;
-  }
-  .featured-card__glass-background {
-    background:
-      center no-repeat
-        linear-gradient(
-          var(--color-dark-background),
-          var(--color-dark-background)
-        ),
-      7vw -6.5rem/115vw auto no-repeat url(../assets/img/pope-francis.png);
-  }
-  .featured-card__content {
-    @apply px-6 py-8;
-  }
-  .featured-card__more-info {
-    @apply inline-block font-light m-0;
-  }
-  .featured-card__buttons {
-    @apply mr-[-1.5rem] mb-[-2rem] ml-[-1.5rem] mt-0;
-  }
+
   .banner-top .banner__left {
-    @apply basis-1/5;
+    flex-basis: 20%;
   }
+
   .banner-top .banner__right {
-    @apply basis-4/5;
+    flex-basis: 80%;
   }
+
   .banner-bottom {
-    @apply flex-row justify-between px-8 py-4;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 2rem;
   }
+
   .banner-bottom .banner__background {
-    @apply top-[-230%];
+    top: -230%;
   }
+
   .banner-bottom .banner__right {
-    @apply w-auto;
+    width: auto;
   }
+
   .banner-bottom .banner__heading {
-    @apply text-2xl mb-0;
+    margin-bottom: 0;
+    font-size: 1.5rem;
   }
+
   .banner-bottom .banner__cta {
-    @apply w-64;
+    width: 16rem;
   }
-  .footer {
-    @apply items-start;
+
+  .footer__links ul {
+    display: flex;
   }
-  .footer__links ul,
-  .footer__social {
-    @apply flex;
-  }
+
   .footer__links ul li {
-    @apply text-base mr-8 p-0;
+    padding: 0;
+    margin-right: 2rem;
+    font-size: 1rem;
   }
-  .footer__social {
-    @apply items-center;
-  }
+
   .footer__social span {
-    @apply text-[color:var(--color-dark-gray)] text-[0.833rem] mr-4;
+    margin-right: 1rem;
+    color: var(--color-dark-gray);
+    font-size: 0.833rem;
   }
+
   .footer__social > ul {
-    @apply mt-[3px];
+    margin-top: 3px;
   }
 }
+
 @media all and (min-width: 1100px) {
   html,
   body {
-    @apply text-lg;
+    font-size: 18px;
   }
+
   .max-centered {
-    @apply relative block w-screen max-w-[1100px] mx-auto;
+    position: relative;
+    display: block;
+    width: 100vw;
+    max-width: 1100px;
+    margin-right: auto;
+    margin-left: auto;
   }
+
   .max-centered > *,
   .max-centered > hr[role="separator"] {
-    @apply mx-0;
+    margin-right: 0;
+    margin-left: 0;
   }
+
   .max-centered main {
-    @apply p-0;
+    padding: 0;
   }
-  .nav {
-    @apply min-h-[22vh];
-  }
-  .nav__logo {
-    @apply mt-12;
-  }
-  .nav__hamburger {
-    @apply hidden;
-  }
-  .nav__links {
-    @apply absolute w-[40vw] h-auto flex-row items-center justify-end bg-transparent translate-x-0 p-0 left-auto right-0 top-12;
-  }
+
   .nav__links li {
-    @apply w-fit text-base font-light text-right ml-0 mr-4 my-0 last:order-none;
+    width: fit-content;
+    margin: 0 1rem 0 0;
+    font-size: 1rem;
+    font-weight: 300;
+    text-align: right;
   }
-  .nav__search {
-    @apply w-8 h-8;
+
+  .nav__links li:last-child {
+    order: 0;
   }
-  .nav__search-input {
-    @apply hidden;
-  }
-  .hero {
-    @apply min-h-[700px];
-  }
-  .hero__background {
-    @apply top-[-2.5rem] w-screen h-auto left-0;
-  }
-  .hero__featured-card {
-    @apply w-6/12 min-w-[600px] max-h-[unset] mt-10 left-0;
-  }
-  .featured-card__glass-background {
-    background:
-      center no-repeat
-        linear-gradient(
-          var(--color-dark-background),
-          var(--color-dark-background)
-        ),
-      calc(-50vw + 650px) -6rem/105vw auto no-repeat url(../assets/img/pope-francis.png);
-  }
-  .featured-card__content {
-    @apply px-6 py-8;
-  }
-  .featured-card__desc {
-    @apply max-w-[85%] mt-8 mb-4 mx-0;
-  }
-  .featured-card__cta {
-    @apply text-2xl mt-4 mb-8 mx-0;
-  }
-  .featured-card__buttons {
-    @apply mr-[-1.5rem] mb-[-2rem] ml-[-1.5rem] mt-0;
-  }
+
   .featured-card__buttons > .icon-button {
-    @apply h-auto;
+    height: auto;
   }
+
   .featured-card__buttons > .icon-button > img {
-    @apply max-w-[2rem] h-8 mx-0 my-[1.3rem];
+    max-width: 2rem;
+    height: 2rem;
+    margin: 1.3rem 0;
   }
-  .closing-gauge__left {
-    @apply pr-4 after:border-y-[0.33rem];
-  }
-  .closing-gauge__right {
-    @apply pl-4;
-  }
-  .closing-gauge__title {
-    @apply text-xl;
-  }
-  .closing-gauge__number,
-  .closing-gauge__desc {
-    @apply text-[2rem];
-  }
+
   .banner-top .banner__text,
   .banner-top .banner__left > .banner__hairline {
-    @apply text-base;
+    font-size: 1rem;
   }
+
   .banner-top .banner__left > .banner__title {
-    @apply text-2xl tracking-[0];
+    font-size: 1.5rem;
+    letter-spacing: 0;
   }
+
   .banner-top .icon-button {
-    @apply block ml-8;
+    display: block;
+    margin-left: 2rem;
   }
+
   .banner-bottom .banner__cta {
-    @apply w-80;
+    width: 20rem;
   }
+
   main h2 {
-    @apply text-[2.5rem];
+    font-size: 2.5rem;
   }
+
   hr[role="separator"] {
-    @apply mx-0 my-8;
+    margin: 2rem 0;
   }
 }
 </style>
