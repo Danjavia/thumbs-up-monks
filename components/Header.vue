@@ -164,6 +164,7 @@ ul {
 
 .featured-card__cta {
   font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 .featured-card__buttons {

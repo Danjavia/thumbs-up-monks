@@ -1,75 +1,47 @@
-# Nuxt 3 Minimal Starter
+# Nuxt 3 Minimal Starter (Thumbs up test for Formula.Monks)
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+For checking the site. visit ()
 
-## Setup
+## Installation
 
-Make sure to install the dependencies:
+### Requirements
+
+- NodeJS v21.7.1 or lts/iron (v20.13.1)
+- pnpm 8.76
+
+### Environment Variables
+
+Create an `.env` file at root of the project with the keys attached via email as txt file `(env.txt)`:
+
+### Instructions
+
+1. Clone repository:
 
 ```bash
-# npm
-npm install
-
-# pnpm
+git clone (https://github.com/Danjavia/thumbs-up-monks)
+cd thumbs-up-monks
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+pnpm dev
 ```
 
-## Development Server
+After go to (http://localhost:3000/)
+   
+### Install via docker
 
-Start the development server on `http://localhost:3000`:
+1. Be sure to copy .env file at root of the project
+
+2. Build the image
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+docker build -t thumbs-up-monks .
 ```
 
-## Production
-
-Build the application for production:
+3. Run container
 
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+docker run -p 3000:3000 thumbs-up-monks
 ```
 
-Locally preview production build:
+After go to (http://localhost:3000/)
 
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+### How to Deploy to vercel

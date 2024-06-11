@@ -1,6 +1,21 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  app: {
+    head: {
+      titleTemplate: "%s - Thumbs Up for Monks",
+      meta: [
+        {
+          name: "description",
+          content: "A little test for try leaderboard system",
+        },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { property: "og:type", content: "website" },
+        { property: "og:title", content: "Thumbs Up for Monks" },
+        { property: "og:description", content: "Descripción del sitio" },
+      ],
+    },
+  },
   plugins: ["~/plugins/firebase.client.ts"],
   runtimeConfig: {
     public: {
@@ -26,9 +41,8 @@ export default defineNuxtConfig({
     },
   },
   modules: [
-    "@vueuse/nuxt", // "nuxt-vuefire",
-    // "nuxt-appwrite",
-    "@nuxthub/core",
+    "@vueuse/nuxt",
+    "@nuxt/test-utils/module",
     "@nuxt/test-utils/module",
     "@formkit/nuxt",
     "@nuxtjs/google-fonts",
@@ -36,29 +50,11 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxt/image",
   ],
-  // vuefire: {
-  //   config: {
-  //     apiKey: process.env.FIREBASE_API_KEY,
-  //     authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  //     projectId: process.env.FIREBASE_PROJECT_ID,
-  //     storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-  //     messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-  //     appId: process.env.FIREBASE_APP_ID,
-  //     measurementId: process.env.FIREBASE_MEASUREMENT_ID,
-  //   },
-  // },
-  // appwrite: {
-  //   endpoint: "https://cloud.appwrite.io/v1",
-  //   project: "6667f4050021e6eb57db",
-  // },
   formkit: {
     autoImport: true,
   },
   tailwindcss: {
     exposeConfig: true,
     viewer: true,
-  },
-  hub: {
-    // NuxtHub options
   },
 });

@@ -1,0 +1,7 @@
+version: 1
+applications:
+  - app_name: thumbs-up
+    environments:
+      - name: production
+        stack: nodejs
+        instances: 1

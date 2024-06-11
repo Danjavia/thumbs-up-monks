@@ -1,6 +1,16 @@
 <script setup lang="ts">
 import Participants from "~/components/Home/Participants.vue";
-const route = useRoute();
+definePageMeta({
+  title: "Welcome to home",
+  meta: [
+    { name: "description", content: "Vote for your favorite personality" },
+    { property: "og:title", content: "Leaderboard" },
+    {
+      property: "og:description",
+      content: "This is the main leaderboard for thumbs up",
+    },
+  ],
+});
 </script>
 
 <template>

@@ -1,6 +1,4 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <nav class="nav" role="navigation">
@@ -9,9 +7,9 @@
       <button class="nav__hamburger icon-button" alt="Open Menu">
         <svg width="25" height="20" xmlns="http://www.w3.org/2000/svg">
           <path
-              d="M0 0h25v4H0V0zm0 8h25v4H0V8zm0 8h25v4H0v-4z"
-              fill="#FFF"
-              fill-rule="nonzero"
+            d="M0 0h25v4H0V0zm0 8h25v4H0V8zm0 8h25v4H0v-4z"
+            fill="#FFF"
+            fill-rule="nonzero"
           />
         </svg>
       </button>
@@ -50,9 +48,9 @@
   justify-content: space-between;
   padding: 0 1rem;
   background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, .8) 0%,
-      rgba(0, 0, 0, 0) 80%
+    to bottom,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0) 80%
   );
 }
 
@@ -79,7 +77,7 @@
   left: 0;
   display: flex;
   width: 100vw;
-  height: calc(100vh - 4rem);
+  height: calc(100vh);
   flex-direction: column;
   padding: 4rem 0 2rem;
   background-color: var(--color-darker-background);
@@ -110,7 +108,7 @@
 .nav__search {
   width: 24px;
   height: 24px;
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 
 .nav__search-input {
@@ -120,9 +118,9 @@
   background-color: transparent;
   border-radius: 0;
   color: var(--color-white);
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-size: 1.5rem;
-  transition: width .2s ease-in;
+  transition: width 0.2s ease-in;
 }
 
 .nav__search-input:focus {
@@ -142,10 +140,10 @@
   height: 100%;
 }
 
-
 /* 1100px min-width */
 @media all and (min-width: 1100px) {
-  html, body {
+  html,
+  body {
     font-size: 18px;
   }
 
@@ -206,5 +204,4 @@
     display: none;
   }
 }
-
 </style>
