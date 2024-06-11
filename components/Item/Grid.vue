@@ -123,11 +123,17 @@ const resetVote = () => {
       </div>
     </div>
     <div class="grid-item__votes">
-      <div class="like-bar" :style="{ width: positivePercentage + '%' }">
+      <div
+        class="like-bar text-left"
+        :style="{ width: positivePercentage + '%' }"
+      >
         <img src="assets/img/thumbs-up.svg" alt="thumbs up" class="mr-2" />
         {{ positivePercentage }}%
       </div>
-      <div class="dislike-bar" :style="{ width: negativePercentage + '%' }">
+      <div
+        class="dislike-bar text-right"
+        :style="{ width: negativePercentage + '%' }"
+      >
         <img src="assets/img/thumbs-down.svg" alt="thumbs down" class="mr-2" />
         {{ negativePercentage }}%
       </div>
@@ -181,22 +187,25 @@ const resetVote = () => {
 
 .like-bar,
 .dislike-bar {
+  overflow: hidden;
   display: flex;
-  justify-content: center;
   align-items: center;
   height: 30px;
   color: white;
   font-weight: bold;
+  padding: 0 1rem;
 }
 
 .like-bar {
   background-color: rgba(60, 187, 180, 0.6);
   width: 50%;
+  justify-content: flex-start;
 }
 
 .dislike-bar {
   background-color: rgba(249, 173, 29, 0.6);
   width: 50%;
+  justify-content: flex-end;
 }
 
 .like-btn,

@@ -1,9 +1,7 @@
-// store/items.js
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import { useNuxtApp } from "#app";
 import { collection, getDocs, doc, updateDoc } from "firebase/firestore";
-import defaultData from "~/assets/data";
 import type { IVote } from "~/types/vote.d";
 
 export const useItemStore = defineStore("itemStore", () => {
@@ -13,7 +11,6 @@ export const useItemStore = defineStore("itemStore", () => {
   const loadItems = async () => {
     if ($db) {
       const querySnapshot = await getDocs(collection($db, "items"));
-      // const querySnapshot = await getDocs(collection($db, "items"));
       items.value = querySnapshot.docs
         .map((doc) => ({
           ...doc.data(),
