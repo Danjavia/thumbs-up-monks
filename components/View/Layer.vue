@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 import { useItemStore } from "~/store/useItemStore";
+import type { IVote } from "~/types/vote";
 
 const props = defineProps<{
   currentView: string;
@@ -25,22 +26,15 @@ watch(internalView, (newVal) => {
 
 // Votes management
 const itemStore = useItemStore();
+const items = computed(() => itemStore.items);
+
+const voteNow = (data: IVote) => {
+  itemStore.voteItem(data);
+};
 
 onMounted(() => {
   itemStore.loadItems();
 });
-
-const items = itemStore.items;
-
-const handleVote = ({
-  name,
-  type,
-}: {
-  name: string;
-  type: "positive" | "negative";
-}) => {
-  itemStore.voteItem(name, type);
-};
 </script>
 
 <template>
@@ -48,6 +42,7 @@ const handleVote = ({
     <ViewList v-if="currentView === 'List'">
       <ItemList
         v-for="item in items"
+        :id="item?.id"
         :key="item.name"
         :name="item.name"
         :description="item.description"
@@ -55,6 +50,7 @@ const handleVote = ({
         :picture="item.picture"
         :lastUpdated="item.lastUpdated"
         :votes="item.votes"
+        @vote="voteNow"
       />
     </ViewList>
     <ViewGrid v-else>

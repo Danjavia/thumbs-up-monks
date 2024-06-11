@@ -1,5 +1,6 @@
 export default [
   {
+    id: "Kanye",
     name: "Kanye West",
     description:
       "Born in Atlanta and raised in Chicago, West was first known as a producer for Roc-A-Fella Records in the early 2000s, producing singles for several mainstream artists.",
@@ -9,6 +10,7 @@ export default [
     votes: { positive: 23, negative: 36 },
   },
   {
+    id: "Mark",
     name: "Mark Zuckerberg",
     description:
       "Born in White Plains, New York, Zuckerberg attended Harvard University, where he launched the Facebook social networking service from his dormitory room on February 4, 2004.",
@@ -18,6 +20,7 @@ export default [
     votes: { positive: 418, negative: 324 },
   },
   {
+    id: "Cristina",
     name: "Cristina Fernández de Kirchner",
     description:
       "Her first term of office started with a conflict with the agricultural sector, and her proposed taxation system was rejected.",
@@ -27,6 +30,7 @@ export default [
     votes: { positive: 45, negative: 97 },
   },
   {
+    id: "Malala",
     name: "Malala Yousafzai",
     description:
       "The daughter of educational activist Ziauddin, Yousafzai was born to a Pashtun family in Mingora, Khyber Pakhtunkhwa, Pakistan. Her family came to run a chain of schools in the region.",
@@ -36,6 +40,7 @@ export default [
     votes: { positive: 18, negative: 3 },
   },
   {
+    id: "Elon",
     name: "Elon Musk",
     description:
       "In 2002, Musk founded SpaceX, an aerospace manufacturer and space transport services company, of which he is CEO, CTO, and lead designer.",
@@ -45,6 +50,7 @@ export default [
     votes: { positive: 1237, negative: 894 },
   },
   {
+    id: "Greta",
     name: "Greta Thumberg",
     description:
       "Thunberg's activism started after convincing her parents to adopt several lifestyle choices to reduce their own carbon footprint.",

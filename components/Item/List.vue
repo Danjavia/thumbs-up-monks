@@ -3,6 +3,7 @@ import { ref, computed } from "vue";
 import { formatDistanceToNow } from "date-fns";
 
 const props = defineProps<{
+  id: string;
   name: string;
   description: string;
   category: string;
@@ -23,16 +24,11 @@ const negativePercentage = computed(() =>
 );
 
 const emit = defineEmits<{
-  (e: "vote", payload: { name: string; type: "positive" | "negative" }): void;
+  (e: "vote", payload: { id: string; type: "positive" | "negative" }): void;
 }>();
 
-const vote = (type: "positive" | "negative") => {
-  emit("vote", { name: props.name, type });
-};
-
 const voteNow = (type: "positive" | "negative") => {
-  if (type === "positive") positiveVotes.value++;
-  else negativeVotes.value++;
+  emit("vote", { id: props.id, type });
 };
 
 const timeAgo = computed(() =>

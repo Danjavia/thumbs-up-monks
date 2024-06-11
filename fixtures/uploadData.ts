@@ -24,7 +24,7 @@ export const checkAndCreateCollection = async () => {
         }
       }
     } catch (error) {
-      console.error(`Error adding collection: ${error.message}`);
+      console.error(`Error adding collection: ${error}`);
     }
   } else {
     console.log("Database has been filled!");
